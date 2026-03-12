@@ -18,7 +18,7 @@
     </ItemGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\..\src\Soenneker.Libraries.Git.Windows.csproj" />
+        <ProjectReference Include="..\..\src\Soenneker.Libraries.Git.Windows\Soenneker.Libraries.Git.Windows.csproj" />
     </ItemGroup>
 
     <ItemGroup>
