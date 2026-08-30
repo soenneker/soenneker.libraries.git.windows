@@ -5,7 +5,7 @@
 
 # Soenneker.Libraries.Git.Windows
 
-Provides a statically linked git executable for Windows.
+A self-contained Git distribution packaged for Windows x64 .NET applications.
 
 ## Install
 
@@ -13,11 +13,14 @@ Provides a statically linked git executable for Windows.
 dotnet add package Soenneker.Libraries.Git.Windows
 ```
 
-## What it provides
+The distribution is copied beneath the application output directory. Use the command entry point so Git can locate the bundled helper programs:
 
-- Provides a statically linked git executable for Windows.
-- The file is copied to the output directory, and located at the relative path: `Resources\`.
+```csharp
+string git = Path.Combine(
+    AppContext.BaseDirectory,
+    "Resources", "win-x64", "git", "cmd", "git.exe");
+```
 
-## How to use it
+Pass each Git argument through `ProcessStartInfo.ArgumentList`, especially repository paths, refs, and commit messages derived from input. Set the working directory explicitly when a command should operate on a particular repository.
 
-After installation, resolve the packaged file from the output-relative path above. The package deploys the asset but does not invoke it for you.
+This package contains Windows x64 assets and does not provide a managed Git API or select binaries for other platforms.
